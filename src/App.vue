@@ -54,7 +54,7 @@
             <button
               v-for="(type, index) in types"
               :key="index"
-              :style="{ backgroundColor: tipoColor[type] }"
+              :style="{ backgroundColor: tipoColor[type], color: tipoTextoColor[type] }"
               class="type-button"
             >
               {{ type }}
