@@ -288,7 +288,7 @@ color: #fff;
   padding: 10px;
   width:auto;
   height: auto;
-  text-shadow: 0px 0px 4px beige;
+/*   text-shadow: 0px 0px 4px beige; */
   color:rgb(0, 0, 0);
   font-family: "Soft Compound";
   border: .10px solid rgba(0, 0, 0, 0.705);
