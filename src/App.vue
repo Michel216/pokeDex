@@ -105,25 +105,36 @@ const inicial = ref(true);
 const fondo = ref("");
 
 const tipoColor = {
-  normal: '#F5F5F5',
-  fire: '#FF4500',
-  water: '#1E90FF',
-  electric: '#FFD700',
-  grass: '#32CD32',
-  ice: '#00FFFF',
-  fighting: '#8B0000',
-  poison: '#800080',
-  ground: '#DEB887',
-  flying: '#87CEEB',
-  psychic: '#FF69B4',
-  bug: '#9ACD32',
-  rock: '#A9A9A9',
-  ghost: '#8A2BE2',
-  dragon: '#00008B',
-  dark: '#000000',
-  steel: '#C0C0C0',
-  fairy: '#FFB6C1'
+  normal: 'rgb(245, 245, 245)',      // '#F5F5F5'
+  fire: 'rgb(255, 69, 0)',           // '#FF4500'
+  water: 'rgb(30, 144, 255)',        // '#1E90FF'
+  electric: 'rgb(255, 215, 0)',      // '#FFD700'
+  grass: 'rgb(50, 205, 50)',         // '#32CD32'
+  ice: 'rgb(0, 255, 255)',           // '#00FFFF'
+  fighting: 'rgb(139, 0, 0)',        // '#8B0000'
+  poison: 'rgb(128, 0, 128)',        // '#800080'
+  ground: 'rgb(222, 184, 135)',      // '#DEB887'
+  flying: 'rgb(135, 206, 235)',      // '#87CEEB'
+  psychic: 'rgb(255, 105, 180)',     // '#FF69B4'
+  bug: 'rgb(154, 205, 50)',          // '#9ACD32'
+  rock: 'rgb(169, 169, 169)',        // '#A9A9A9'
+  ghost: 'rgb(138, 43, 226)',        // '#8A2BE2'
+  dragon: 'rgb(0, 0, 139)',          // '#00008B'
+  dark: 'rgb(0, 0, 0)',              // '#000000'
+  steel: 'rgb(192, 192, 192)',       // '#C0C0C0'
+  fairy: 'rgb(255, 182, 193)'        // '#FFB6C1'
 };
+
+function getContrastingTextColor(bgColor) {
+  const rgb = bgColor.match(/\d+/g).map(Number);
+  const luminance = (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+  return luminance > 0.5 ? 'black' : 'white';
+}
+
+const tipoTextoColor = {};
+for (const [tipo, color] of Object.entries(tipoColor)) {
+  tipoTextoColor[tipo] = getContrastingTextColor(color);
+}
 
 async function traer() {
   try {
@@ -138,7 +149,6 @@ async function traer() {
     imgPokemon.value = res.data.sprites.other['official-artwork'].front_default;
     stats.value = res.data.stats;
     types.value = res.data.types.map(typeInfo => typeInfo.type.name);
-
     inicial.value = false;
     fondo.value = tipoColor[types.value[0]];
   } catch (error) {
@@ -309,17 +319,16 @@ color: #fff;
 }
 
 .speed-container {
-  margin-bottom: 30%; /* Ajusta este valor según sea necesario */
+  margin-bottom: 30%;
 }
 
 .other-container {
-  margin-bottom: 30%; /* Ajusta este valor según sea necesario */
+  margin-bottom: 30%; 
 }
 
 
 .datos{
   position: absolute;
-  /* background-color: aqua; */
   width: 60%;
 
 right: 0;
