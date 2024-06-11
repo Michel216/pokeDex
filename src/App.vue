@@ -154,11 +154,12 @@ async function traer() {
     url("https://db.onlinewebfonts.com/t/46f95fc88d25f757bc1393f53910da86.svg#Bordello-Shaded")format("svg");
   color: #fff;
 }
-
+*{
 font-family: "Soft Compound";
 }
 
 body {
+  font-family: "Soft Compound";
   color: rgb(53, 44, 44);
   margin: 0;
   padding: 0;
