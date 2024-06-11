@@ -14,7 +14,7 @@
     <div v-else>
       <div class="BuscarPokemon">
         <q-input
-          style="width: 50%; position: absolute; left: 3%; top: 3%; color: aliceblue; background-color: rgba(0, 0, 0, 0.158); border-radius: 10px; "
+          style="width: 30%; position: absolute; left: 3%; top: 3%; color: aliceblue; background-color: rgba(0, 0, 0, 0.158); border-radius: 10px; "
           filled v-model="pokemon" @keyup.enter="traer" placeholder="Buscar Pokémon" clearable text-color="white">
           <template v-slot:append>
             <q-icon name="search" @click="traer" />
@@ -46,7 +46,7 @@
                 <h4 v-else-if="stat.stat.name !== 'speed'" class="otro-contenedor">{{ stat.stat.name }}</h4>
                 <q-circular-progress show-value :value="stat.base_stat" :max="255" size="100px" color="secondary"
                   track-color="grey-2">
-                  <span class="valor">{{ stat.base_stat }}</span>
+                  <span class="valor">{{ stat.base_stat }} %</span>
                 </q-circular-progress>
               </div>
             </div>
@@ -119,7 +119,7 @@ async function traer() {
     tipoPokemon.value = res.data.types.map(typeInfo => typeInfo.type.name).join(', ');
     pesoPokemon.value = 'Peso: ' + res.data.weight / 10 + ' kg - ';
     alturaPokemon.value = 'Altura: ' + res.data.height / 10 + ' m';
-    habilidadPokemon.value = res.data.abilities.map(abilityInfo => abilityInfo.ability.name).join(', ');
+    habilidadPokemon.value = res.data.abilities.map(abilityInfo => abilityInfo.ability.name) + '%';
     imgPokemon.value = res.data.sprites.other['official-artwork'].front_default;
     stats.value = res.data.stats;
     types.value = res.data.types.map(typeInfo => typeInfo.type.name);
@@ -154,176 +154,8 @@ async function traer() {
     url("https://db.onlinewebfonts.com/t/46f95fc88d25f757bc1393f53910da86.svg#Bordello-Shaded")format("svg");
   color: #fff;
 }
-*{
-font-family: "Soft Compound";
-}
 
-body {
-  font-family: "Soft Compound";
-  color: rgb(53, 44, 44);
-  margin: 0;
-  padding: 0;
-}
-
-.main-container {
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.inicial img {
-  object-fit: cover;
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  z-index: -1;
-}
-
-.BuscarPokemonInicio {
-  width: 60%;
-  position: absolute;
-  left: 50%;
-  top: 3%;
-  transform: translateX(-50%);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.508);
-  margin: auto;
-  align-content: center;
-  border-radius: 10px;
-}
-
-.BuscarPokemon {
-  position: absolute;
-  width: 50%;
-  left: 3%;
-  top: 3%;
-  color: aliceblue;
-  background-color: rgba(0, 0, 0, 0.158);
-  border-radius: 10px;
-}
-
-.q-field__control,
-.q-field__native,
-.q-field__input,
-.q-field__focusable-action,
-.q-icon {
-  color: #fff;
-}
-
-.fondo {
-  width: 35%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: transparent;
-}
-
-.id h2 {
-  font-size: 133px;
-  margin: 0;
-  padding: 0;
-  text-shadow: 0px 0px 5px beige;
-  opacity: 0.6;
-}
-
-.informacion {
-  display: flex;
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.imagen img {
-  position: absolute;
-  z-index: 3;
-  top: 13%;
-  left: 25%;
-  width: 30%;
-}
-
-.infoPokemon {
-  background-color: #ffffffdc;
-  height: 100%;
-  width: 60%;
-  right: 0;
-  top: 0;
-  position: relative;
-  border-radius: 80px 0 0 80px;
-}
-
-.nombrePokemon {
-  margin-top: 0.90%;
-  font-size: 550%;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-#types-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: -50px;
-}
-
-.type-button {
-  cursor: pointer;
-  transition: background 0.3s;
-  border-radius: 25px;
-  font-size: 190%;
-  margin: 4px;
-  padding: 10px;
-  color: rgb(0, 0, 0);
-  border: 0.10px solid rgba(0, 0, 0, 0.705);
-}
-
-.estadistica {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
-  gap: 20%;
-  width: 100%;
-  height: auto;
-  margin-top: 2%;
-}
-
-.speed-text,
-.otro-contenedor {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  text-align: center;
-}
-
-.speed-container,
-.other-container {
-  margin-bottom: 30%;
-}
-
-.datos {
-  position: absolute;
-  width: 60%;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.data {
-  color: black;
-}
-
-.valor {
-  color: rgb(3, 83, 101);
-}
-
-*/ * {
+* {
   font-family: "Soft Compound";
 }
 
@@ -395,7 +227,7 @@ body {
 
 
 .id h2 {
-  font-size: 133px;
+  font-size: 150px;
   margin: 0;
   padding: 0;
   text-shadow: 0px 0px 5px beige;
@@ -413,7 +245,7 @@ body {
   position: absolute;
   z-index: 3;
   top: 10%;
-  left: 20%;
+  left: 16%;
 }
 
 .infoPokemon {
@@ -551,7 +383,7 @@ body {
   .id h2 {
     display: flex;
     margin-top: 50px;
-    top: 10%;
+    top: 12%;
     font-size: 14vw;
     left: 13%;
     position: absolute;
@@ -659,16 +491,16 @@ body {
   }
 
   .datos h4 {
-    font-size: 5.2vw;
+    font-size: 5vw;
   }
 }
 
 @media screen and (max-width: 640px) {
   .id h2 {
     display: flex;
-    margin-top: 50px;
-    top: 10%;
-    font-size: 14vw;
+    margin-top: 60px;
+
+    font-size: 16vw;
     left: 11%;
     position: absolute;
   }
@@ -797,7 +629,7 @@ body {
   }
 
   .estadistica>.habilidades>div {
-    margin-bottom: -124%;
+    margin-bottom: -118%;
   }
 
   .habilidades {
@@ -815,7 +647,7 @@ body {
   }
 
   .datos h4 {
-    padding-top: 260px;
+    padding-top: 275px;
     font-size: 7vw;
     margin: 0%;
   }
