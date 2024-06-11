@@ -194,7 +194,7 @@ body {
 
 .BuscarPokemon {
   position: absolute;
-  width: 30%;
+  width: 50%;
   left: 3%;
   top: 3%;
   color: aliceblue;
