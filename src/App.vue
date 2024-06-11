@@ -14,7 +14,7 @@
     <div v-else>
       <div class="BuscarPokemon">
         <q-input
-          style="width: 30%; position: absolute; left: 3%; top: 3%; color: aliceblue; background-color: rgba(0, 0, 0, 0.158); border-radius: 10px; "
+          style="width: 50%; position: absolute; left: 3%; top: 3%; color: aliceblue; background-color: rgba(0, 0, 0, 0.158); border-radius: 10px; "
           filled v-model="pokemon" @keyup.enter="traer" placeholder="Buscar Pokémon" clearable text-color="white">
           <template v-slot:append>
             <q-icon name="search" @click="traer" />
